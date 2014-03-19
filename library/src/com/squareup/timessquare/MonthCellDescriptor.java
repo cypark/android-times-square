@@ -18,9 +18,10 @@ class MonthCellDescriptor {
   private final boolean isSelectable;
   private boolean isHighlighted;
   private RangeState rangeState;
+  private String imageURL;
 
   MonthCellDescriptor(Date date, boolean currentMonth, boolean selectable, boolean selected,
-      boolean today, boolean highlighted, int value, RangeState rangeState) {
+      boolean today, boolean highlighted, int value, RangeState rangeState, String imageURL) {
     this.date = date;
     isCurrentMonth = currentMonth;
     isSelectable = selectable;
@@ -29,6 +30,7 @@ class MonthCellDescriptor {
     isToday = today;
     this.value = value;
     this.rangeState = rangeState;
+    this.imageURL = imageURL;
   }
 
   public Date getDate() {
@@ -57,6 +59,14 @@ class MonthCellDescriptor {
 
   void setHighlighted(boolean highlighted) {
     isHighlighted = highlighted;
+  }
+  
+  public String getImageURL(){
+	  return imageURL;
+  }
+  
+  public void setImageURL(String imageURL){
+	  this.imageURL = imageURL;
   }
 
   public boolean isToday() {

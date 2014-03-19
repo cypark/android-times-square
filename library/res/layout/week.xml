@@ -4,40 +4,50 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:padding="0dp"
     >
-  <com.squareup.timessquare.CalendarCellView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+    <!--  style="@style/CalendarCell.CalendarDate"  -->
+  <com.squareup.timessquare.CalendarCellImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+	  style="@style/CalendarCell.CalendarDate"
+      />
+  
+  <com.squareup.timessquare.CalendarCellImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+	  style="@style/CalendarCell.CalendarDate"
+	  />
+  <com.squareup.timessquare.CalendarCellImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+	  style="@style/CalendarCell.CalendarDate"
+	  />
+  <com.squareup.timessquare.CalendarCellImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
       style="@style/CalendarCell.CalendarDate"
       />
-  <com.squareup.timessquare.CalendarCellView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+  <com.squareup.timessquare.CalendarCellImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
       style="@style/CalendarCell.CalendarDate"
       />
-  <com.squareup.timessquare.CalendarCellView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+  <com.squareup.timessquare.CalendarCellImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
       style="@style/CalendarCell.CalendarDate"
       />
-  <com.squareup.timessquare.CalendarCellView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      style="@style/CalendarCell.CalendarDate"
-      />
-  <com.squareup.timessquare.CalendarCellView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      style="@style/CalendarCell.CalendarDate"
-      />
-  <com.squareup.timessquare.CalendarCellView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      style="@style/CalendarCell.CalendarDate"
-      />
-  <com.squareup.timessquare.CalendarCellView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+  <com.squareup.timessquare.CalendarCellImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
       style="@style/CalendarCell.CalendarDate"
       />
 </com.squareup.timessquare.CalendarRowView>

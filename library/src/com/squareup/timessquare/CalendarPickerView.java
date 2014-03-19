@@ -532,6 +532,39 @@ public class CalendarPickerView extends ListView {
     return date;
   }
 
+    
+  public boolean betweenDisplayDates(Date date){
+	    if (date.before(minCal.getTime()) || date.after(maxCal.getTime())) {
+	    	return false;
+	    }
+	    return true;
+  }
+  
+  public void imageDates(List<Date> dates, List<String> imageURLs) {
+	  
+	    for (int i = 0 ; i < dates.size(); i ++ ) {
+	    	Date date = dates.get(i);
+	    	String imageURL = imageURLs.get(i);
+	    	
+	        validateDate(date);
+
+	        MonthCellWithMonthIndex monthCellWithMonthIndex = getMonthCellWithIndexByDate(date);
+	        if (monthCellWithMonthIndex != null) {
+	          Calendar newlyHighlightedCal = Calendar.getInstance();
+	          newlyHighlightedCal.setTime(date);
+	          MonthCellDescriptor cell = monthCellWithMonthIndex.cell;
+
+	          highlightedCells.add(cell);
+	          highlightedCals.add(newlyHighlightedCal);
+	          cell.setHighlighted(true);
+	          cell.setImageURL(imageURL);
+	        }
+	      }
+
+	      adapter.notifyDataSetChanged();
+	      setAdapter(adapter);
+  }
+  
   public void highlightDates(Collection<Date> dates) {
     for (Date date : dates) {
       validateDate(date);
@@ -608,6 +641,16 @@ public class CalendarPickerView extends ListView {
       return position;
     }
 
+    @Override
+    public int getViewTypeCount() {                 
+        return getCount();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+    
     @Override public View getView(int position, View convertView, ViewGroup parent) {
       MonthView monthView = (MonthView) convertView;
       if (monthView == null) {
@@ -642,10 +685,10 @@ public class CalendarPickerView extends ListView {
         Date date = cal.getTime();
         boolean isCurrentMonth = cal.get(MONTH) == month.getMonth();
         boolean isSelected = isCurrentMonth && containsDate(selectedCals, cal);
-        boolean isSelectable =
-            isCurrentMonth && betweenDates(cal, minCal, maxCal) && isDateSelectable(date);
+        boolean isSelectable = isCurrentMonth && betweenDates(cal, minCal, maxCal) && isDateSelectable(date);
         boolean isToday = sameDate(cal, today);
         boolean isHighlighted = containsDate(highlightedCals, cal);
+        String imageURL = containsImageURL(highlightedCals, cal);
         int value = cal.get(DAY_OF_MONTH);
 
         MonthCellDescriptor.RangeState rangeState = MonthCellDescriptor.RangeState.NONE;
@@ -661,13 +704,25 @@ public class CalendarPickerView extends ListView {
 
         weekCells.add(
             new MonthCellDescriptor(date, isCurrentMonth, isSelectable, isSelected, isToday,
-                isHighlighted, value, rangeState));
+                isHighlighted, value, rangeState, imageURL));
         cal.add(DATE, 1);
       }
     }
     return cells;
   }
 
+  private String containsImageURL(List<Calendar> selectedCals, Calendar cal) {
+	    for (Calendar selectedCal : selectedCals) {
+	      if (sameDate(cal, selectedCal)) {
+	    	  //
+	    	  //	
+	    	  MonthCellWithMonthIndex monthCellWithMonthIndex = getMonthCellWithIndexByDate(cal.getTime());
+	    	  return monthCellWithMonthIndex.cell.getImageURL();
+	      }
+	    }
+	    return "";
+	  }
+  
   private static boolean containsDate(List<Calendar> selectedCals, Calendar cal) {
     for (Calendar selectedCal : selectedCals) {
       if (sameDate(cal, selectedCal)) {
