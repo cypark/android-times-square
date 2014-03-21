@@ -641,16 +641,6 @@ public class CalendarPickerView extends ListView {
       return position;
     }
 
-    @Override
-    public int getViewTypeCount() {                 
-        return getCount();
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
-    
     @Override public View getView(int position, View convertView, ViewGroup parent) {
       MonthView monthView = (MonthView) convertView;
       if (monthView == null) {

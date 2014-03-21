@@ -35,10 +35,14 @@ public class CalendarCellImageView extends FrameLayout {
 		  
 	    super(context, attrs, defaultStyle);
 	    
-	    textView = new CalendarCellView(context, attrs);
-	    FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+	    imageView = new ImageView(getContext());
+	    imageView.setScaleType(ScaleType.CENTER_CROP);
 	    
+	    textView = new CalendarCellView(context, attrs);
+	    
+	    FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 	    this.addView(textView, params);
+	    this.addView(imageView, 0);
 	    
 	    setClickable(false);
 	    setFocusable(false);
@@ -51,14 +55,11 @@ public class CalendarCellImageView extends FrameLayout {
 
 	  public void setImageURL(String imageURL) {
 		  if (TextUtils.isEmpty(imageURL) == false ) {
-
-			  imageView = new ImageView(getContext());
-			  imageView.setScaleType(ScaleType.CENTER_CROP);
-			  this.addView(imageView, 0);
-			  
 			  ImageLoader.getInstance().displayImage(imageURL, imageView);
-
 			  textView.setTextColor(getResources().getColor(R.color.calendar_text_selected));
+		  }
+		  else{
+			  imageView.setImageResource(android.R.color.transparent);
 		  }
 	  }
 }
