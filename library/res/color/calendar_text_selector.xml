@@ -13,5 +13,5 @@
   <item app:state_current_month="false" android:color="@color/calendar_text_inactive"/>
   <item app:state_selectable="false" android:color="@color/calendar_text_unselectable" />
   <item android:color="@color/calendar_text_active"/>
-  
+   
 </selector>
