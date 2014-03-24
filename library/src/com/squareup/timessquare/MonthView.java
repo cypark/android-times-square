@@ -70,13 +70,12 @@ public class MonthView extends LinearLayout {
           cellView.setEnabled(cell.isCurrentMonth());
           cellView.setClickable(!displayOnly);
           
-          cellView.getTextView().setSelectable(cell.isSelectable());
-          cellView.getTextView().setSelected(cell.isSelected());
-          cellView.getTextView().setCurrentMonth(cell.isCurrentMonth());
-          cellView.getTextView().setToday(cell.isToday());
-          cellView.getTextView().setRangeState(cell.getRangeState());
-          cellView.getTextView().setHighlighted(cell.isHighlighted());
-
+          cellView.setSelectable(cell.isSelectable());
+          cellView.setSelected(cell.isSelected());
+          cellView.setCurrentMonth(cell.isCurrentMonth());
+          cellView.setToday(cell.isToday());
+          cellView.setRangeState(cell.getRangeState());
+          cellView.setHighlighted(cell.isHighlighted());
         }
       } else {
         weekRow.setVisibility(GONE);
