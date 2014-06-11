@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.squareup.timessquare.MonthCellDescriptor.RangeState;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -581,6 +583,16 @@ public class CalendarPickerView extends ListView {
       }
     }
 
+    adapter.notifyDataSetChanged();
+    setAdapter(adapter);
+  }
+  
+  public void clearImageDates(){
+	  highlightedCells.clear();
+      highlightedCals.clear();
+      
+      validateAndUpdate();
+      
     adapter.notifyDataSetChanged();
     setAdapter(adapter);
   }

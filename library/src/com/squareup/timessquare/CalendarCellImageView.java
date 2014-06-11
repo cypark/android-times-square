@@ -63,10 +63,17 @@ public class CalendarCellImageView extends FrameLayout {
 
 	public void setImageURL(String imageURL) {
 		if (TextUtils.isEmpty(imageURL) == false) {
-			//	이미지가 있다면,
-			ImageLoader.getInstance().displayImage(imageURL, imageView);
+			
+			if ( "UserText".compareTo(imageURL) == 0 ){
+			}
+			else{
+				//	이미지가 있다면,
+				ImageLoader.getInstance().displayImage(imageURL, imageView);
+			}
+			
 			textView.setTextColor(getResources().getColor(R.color.calendar_text_selected));
 			textView.setShadowLayer((float) 1.5, 3, 3, 0x7f000000);
+			
 		} else {
 			//	이미지가 없다면,
 			imageView.setImageResource(android.R.color.transparent);
