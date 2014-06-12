@@ -69,6 +69,7 @@ public class CalendarCellImageView extends FrameLayout {
 			else{
 				//	이미지가 있다면,
 				ImageLoader.getInstance().displayImage(imageURL, imageView);
+				imageView.setVisibility(View.VISIBLE);
 			}
 			
 			textView.setTextColor(getResources().getColor(R.color.calendar_text_selected));
@@ -77,6 +78,7 @@ public class CalendarCellImageView extends FrameLayout {
 		} else {
 			//	이미지가 없다면,
 			imageView.setImageResource(android.R.color.transparent);
+			imageView.setVisibility(View.GONE);
 			//	textView.setTextColor(getResources().getColor(R.color.calendar_text_selected));
 			textView.setShadowLayer(0,0,0,0);	//	clear shadow layer.
 		}
